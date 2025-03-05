@@ -1,0 +1,23 @@
+[build-system]
+requires = ['hatchling']
+build-backend = 'hatchling.build'
+
+[project]
+name = 'True_Tiktok_Uploader'
+version = '2025.03.05'
+authors = [
+    { name='TrueGIXERJ' },
+]
+description = 'an automated, selenium based tiktok video uploader.'
+readme = 'README.md'
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: Microsoft :: Windows",
+]
+license = 'GPL-3.0-only'
+license-files = ["LICEN[CS]E*"]
+dependencies = [
+    "selenium",
+    "TrueGIXERJ_Utils"
+]
