@@ -5,7 +5,6 @@ from True_Tiktok_Uploader import config
 from True_Tiktok_Uploader.auth import AuthBackend
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import threading
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import ElementClickInterceptedException, TimeoutException
 from selenium.webdriver.common.keys import Keys
@@ -119,7 +118,7 @@ def _set_description(driver, description):
     time.sleep(1)
 
     try:
-        words = description.split(" ")
+        words = [word for word in description.split(" ") if word]
         for word in words:
             if word[0] == "#" or word[0] == '@':
                 desc.send_keys(word)
