@@ -92,6 +92,17 @@ def _set_description(driver, description):
     if description is None:
         return
 
+	# before setting description, try to get rid of any pesky new-feature pop ups with a "Got It" button...
+    try:
+        new_feature = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[.//div[text()='Got it']]"))
+        )
+        new_feature.click()
+        logger.info("Dismissed new feature window")
+    except TimeoutException:
+        # nothing new, good for us, bad for a standard user lol
+        logger.info("No new feature window found")
+
     logger.info('Setting description')
 
     description = description.encode('utf-8', 'ignore').decode('utf-8')

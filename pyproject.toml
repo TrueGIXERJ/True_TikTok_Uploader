@@ -4,7 +4,7 @@ build-backend = 'hatchling.build'
 
 [project]
 name = 'True_Tiktok_Uploader'
-version = '2026.01.07.02'
+version = '2026.01.07.03'
 authors = [
     { name='TrueGIXERJ' },
 ]
