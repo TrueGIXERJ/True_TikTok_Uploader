@@ -1,5 +1,5 @@
 from TrueGIXERJ_Utils.logger import logger
-import config
+from True_Tiktok_Uploader import config
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 

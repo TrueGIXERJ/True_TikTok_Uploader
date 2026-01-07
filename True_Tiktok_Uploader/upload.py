@@ -1,8 +1,8 @@
 from TrueGIXERJ_Utils.logger import logger
 from selenium import webdriver
 import os
-import config
-from auth import AuthBackend
+from True_Tiktok_Uploader import config
+from True_Tiktok_Uploader.auth import AuthBackend
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
