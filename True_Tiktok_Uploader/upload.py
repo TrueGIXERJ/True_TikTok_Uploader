@@ -1,8 +1,8 @@
 from TrueGIXERJ_Utils.logger import logger
 from selenium import webdriver
 import os
-from True_Tiktok_Uploader import config
-from True_Tiktok_Uploader.auth import AuthBackend
+import config
+from auth import AuthBackend
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -142,6 +142,17 @@ def _post_video(driver) -> None:
     except ElementClickInterceptedException:
         logger.info("Trying to click on the button again")
         driver.execute_script('document.querySelector(".btn-post > button").click()')
+
+	# tiktok has added a pre-post check, if the modal pops up, click "post now"
+    try:
+        post_now = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//div[@role='dialog']//button[.//div[text()='Post now']]"))
+        )
+        post_now.click()
+        logger.info("Clicked confirmation modal")
+    except TimeoutException:
+        # modal not appeared, this is alright
+        logger.info("No confirmation modal")
 
     # waits for the video to upload
     logger.info('Waiting for video to finish posting...')
